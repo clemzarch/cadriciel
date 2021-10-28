@@ -8,7 +8,7 @@ Create reusable template parts in `blocks/`
 
 Compiled pages are stored under `public/`
 
-## The `<z>` tag:
+## The `<z>` tag (temporary name (i think)):
 
 <z `variables to replace in the template`> `the name of the block without .html` </z>
 

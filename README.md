@@ -10,7 +10,7 @@ Compiled pages are stored under `public/`
 
 ## The `<z>` tag:
 
-<z `variables to replace in the template`> `the name of the template without .html` </z>
+<z `variables to replace in the template`> `the name of the block without .html` </z>
 
 `<z foo="bar">file</z>` will render `blocks/file.html` and replace occurences of `$foo` with `bar`.
 

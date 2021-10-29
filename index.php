@@ -1,15 +1,24 @@
 <?php
 
 $url = $_SERVER['REQUEST_URI'];
-$url = str_replace('/ZMS/', '', $url);
+$url = 'pages/' . str_replace('/ZMS/', '', $url);
 
-if (!strpos($url, '.html')) {
+//====================================== it's a folder, we need to show index
+if (is_dir($url)) {
+	$url = $url . 'index.html';
+}
+
+//====================================== it's an html file without extension
+if (
+	!strpos($url, '.html') && file_exists($url . '.html')
+) {
 	$url = $url . '.html';
 }
 
-include('system/public/' . $url);
-
-// build cache for next person, gotta go fast
+//====================================== build cache for the next person, gotta go fast
 require('system/CacheChecker.php');
 use CacheChecker as CacheChecker;
-(new CacheChecker)->check();
+(new CacheChecker)->check(str_replace('pages/', '', $url));
+
+include($url);
+

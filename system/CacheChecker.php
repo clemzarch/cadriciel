@@ -10,23 +10,23 @@ class CacheChecker {
 
 		if (
 			!array_key_exists($filename, $history) ||
-			filemtime('pages/' . $filename) > $history[$filename] ||
-			!file_exists(__DIR__ . '/public/' . $filename)
+			!file_exists('public/' . $filename) ||
+			filemtime('../pages/' . $filename) > $history[$filename]
 		) {
 			(new Builder)->start($filename);
-			$history[$filename] = filemtime('pages/' . $filename);
-			file_put_contents(__DIR__ . '/cache-history.json', json_encode($history));
+			$history[$filename] = filemtime('../pages/' . $filename);
+			file_put_contents('cache-history.json', json_encode($history));
 		}
 	}
 
 	private function getHistory(): array
 	{
-		if (!file_exists(__DIR__ . '/cache-history.json')) {
+		if (!file_exists('cache-history.json')) {
 			return [];
 		}
 
 		try {
-			$file = file_get_contents(__DIR__ . '/cache-history.json');
+			$file = file_get_contents('cache-history.json');
 
 			return json_decode(
 				$file,

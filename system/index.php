@@ -8,7 +8,10 @@ if (is_dir('../pages/' . $filename)) {
 }
 
 //====================================== it's an html file without extension
-if (file_exists('../pages/' . $filename . '.html')) {
+if (
+	!strpos('.html', $filename) &&
+	file_exists('../pages/' . $filename . '.html')
+) {
 	$filename = $filename . '.html';
 }
 

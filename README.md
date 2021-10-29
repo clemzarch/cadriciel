@@ -6,6 +6,8 @@ Create html documents in `pages/`
 
 Create reusable template parts in `blocks/`
 
+Add `.css` and `.js` files next to your `.html` with the same filename for automatic linking.
+
 Compiled pages are stored under `public/`
 
 ## The `<z>` tag (temporary name (i think)):

@@ -6,7 +6,9 @@ class DocumentBuilder
 	{
 		$content = file_get_contents('pages/' . $filename);
 
-		$this->appendContent($content)->saveHTMLFile('public/' . $filename);
+		is_dir(__DIR__ . '/public') ?: mkdir(__DIR__ . '/public');
+
+		$this->appendContent($content)->saveHTMLFile(__DIR__ . '/public/' . $filename);
 	}
 
 	private function appendContent(string $content): DOMDocument
